@@ -37,6 +37,47 @@ Criação do arquivo de configuração do plugin Metabase.php no diretório conf
                     'title' => 'TITULO_DASHBOARD'
                 ],
             ],
+            'cards' => [
+              // cards que aparecem na home
+              'home' => [
+                  [
+                      'type' => 'agent',
+                      'label' => '',
+                      'icon'=> 'agent',
+                      'iconClass'=> 'agent__color',
+                      'panelLink'=> 'painel-agentes',
+                      'data'=> [
+                          [
+                              'icon'=> 'agent',
+                              'label' => 'Agentes cadastrados',
+                              'entity' => 'MapasCulturais\\Entities\\Agent',
+                              'query' => [],
+                              'value' => null
+                          ],
+                      ]
+                  ],     
+              ],
+              // cards que aparecem na entidade (página de pesquisa)
+              'entities' => [
+                  [
+                      'type' => 'agent',
+                      'label' => '',
+                      'icon'=> 'agent',
+                      'iconClass'=> 'agent__color',
+                      'panelLink'=> 'painel-agentes',
+                      'data'=> [
+                          [
+                              'id' => 'agentes-cadastrados',
+                              'icon'=> 'agent',
+                              'label' => 'Agentes cadastrados',
+                              'entity' => 'MapasCulturais\\Entities\\Agent',
+                              'query' => [],
+                              'value' => null
+                          ],
+                      ]
+                  ],
+              ]
+            ]
         ]
     ]
 ];
