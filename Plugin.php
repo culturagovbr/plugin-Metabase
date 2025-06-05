@@ -31,9 +31,9 @@ class Plugin extends \MapasCulturais\Plugin
             $this->part('search-tabs/opportunity');
         });
 
-        $app->hook('template(search.spaces.search-tabs):after', function(){
-            $this->part('search-tabs/space');
-        });
+        // $app->hook('template(search.spaces.search-tabs):after', function(){
+        //     $this->part('search-tabs/space');
+        // });
 
         $app->hook('template(search.agents.search-header):after', function(){
             $this->part('search-tabs/entity-agent-cards');
