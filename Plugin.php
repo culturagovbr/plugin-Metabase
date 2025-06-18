@@ -14,6 +14,11 @@ class Plugin extends \MapasCulturais\Plugin
     public function _init()
     {
         $app = App::i();
+
+        if(!$app->config['Metabase']['enabled']){
+            return;
+        }
+
         //load css
         $app->hook('<<GET|POST>>(<<*>>.<<*>>)', function() use ($app) {
             $app->view->enqueueStyle('app-v2', 'metabase', 'css/plugin-metabase.css');
