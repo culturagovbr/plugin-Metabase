@@ -15,7 +15,7 @@ class Plugin extends \MapasCulturais\Plugin
     {
         $app = App::i();
 
-        if(!$app->config['Metabase']['enabled']){
+        if (!$app->config['Metabase']['enabled']) {
             return;
         }
 
