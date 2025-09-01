@@ -24,8 +24,8 @@ class Plugin extends \MapasCulturais\Plugin
         }
 
         //load css
-        $app->hook('<<GET|POST>>(<<*>>.<<*>>)', function() use ($app) {
-            $app->view->enqueueStyle('app-v2', 'metabase', 'css/plugin-metabase.css');
+        $app->hook('<<GET|POST>>(<<metabase|site>>.<<*>>)', function() use ($app) {
+            $app->view->enqueueStyle('app-v2', 'metabase', 'css/plugin-Metabase.css');
         });
         $app->hook('component(home-feature):after', function() {
             /** @var \MapasCulturais\Theme $this */
@@ -71,6 +71,6 @@ class Plugin extends \MapasCulturais\Plugin
     {
         $app = App::i();
 
-        $app->registerController('metabase', 'Metabase\Controllers\Metabase');
+        $app->registerController('metabase', Controllers\Metabase::class);
     }
 }
