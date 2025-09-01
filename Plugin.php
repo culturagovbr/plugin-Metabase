@@ -8,6 +8,10 @@ class Plugin extends \MapasCulturais\Plugin
 {
     function __construct($config = [])
     {
+        $config+= [
+            'enabled' => function() { return true;}
+        ];
+
         parent::__construct($config);
     }
 
@@ -15,7 +19,7 @@ class Plugin extends \MapasCulturais\Plugin
     {
         $app = App::i();
 
-        if (!$app->config['Metabase']['enabled']) {
+        if (!$this->config['enabled']()) {
             return;
         }
 
