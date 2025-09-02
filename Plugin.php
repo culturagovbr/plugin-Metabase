@@ -8,6 +8,10 @@ class Plugin extends \MapasCulturais\Plugin
 {
     function __construct($config = [])
     {
+        $config+= [
+            'enabled' => function() { return true;}
+        ];
+
         parent::__construct($config);
     }
 
@@ -15,13 +19,13 @@ class Plugin extends \MapasCulturais\Plugin
     {
         $app = App::i();
 
-        if (!$app->config['Metabase']['enabled']) {
+        if (!$this->config['enabled']()) {
             return;
         }
 
         //load css
-        $app->hook('<<GET|POST>>(<<*>>.<<*>>)', function() use ($app) {
-            $app->view->enqueueStyle('app-v2', 'metabase', 'css/plugin-metabase.css');
+        $app->hook('<<GET|POST>>(<<metabase|site|search>>.<<*>>)', function() use ($app) {
+            $app->view->enqueueStyle('app-v2', 'metabase', 'css/plugin-Metabase.css');
         });
         $app->hook('component(home-feature):after', function() {
             /** @var \MapasCulturais\Theme $this */
@@ -67,6 +71,6 @@ class Plugin extends \MapasCulturais\Plugin
     {
         $app = App::i();
 
-        $app->registerController('metabase', 'Metabase\Controllers\Metabase');
+        $app->registerController('metabase', Controllers\Metabase::class);
     }
 }

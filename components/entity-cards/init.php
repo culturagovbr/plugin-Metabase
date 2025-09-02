@@ -5,7 +5,7 @@ use MapasCulturais\App;
 
 $app = App::i();
 
-$cards = $app->config['Metabase']['config']['cards']['entities'];
+$cards = $app->config['Metabase']['config']['cards']['entities'] ?? [];
 
 $app->applyHook('component(home-metabase).data', [&$cards]);
 
