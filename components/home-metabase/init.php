@@ -8,6 +8,11 @@ $app = App::i();
 $cards = $app->config['Metabase']['config']['cards']['home'];
 
 $app->applyHook('component(home-metabase).data', [&$cards]);
+foreach ($cards as $key => &$card) {
+    if(isset($card['permission']) && !$card['permission']()) {
+        unset($cards[$key]);
+    }
+}
 
 foreach ($cards as &$card) {
     foreach ($card['data'] as &$data) {
